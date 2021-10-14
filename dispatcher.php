@@ -14,6 +14,9 @@ switch ($aParamsURL[1]) {
     case 'subjectdelete':
         include 'controllers/subjectDeleteController.php';
         break;
+    case 'subjectadd':
+        include 'controllers/subjectAddController.php';
+        break;
     case 'student':
         include 'controllers/studentController.php';
         break;

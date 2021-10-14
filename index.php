@@ -14,7 +14,7 @@
 <h1 class="text-center mx-auto my-3">Test Bases de données PDO</h1>
 <?php //include('connexion.php') ?>
 <div class="container d-flex justify-content-end">
-    <p><a type ="button" class="btn btn-outline-dark " href="/subjectlist/">Ajouter une matière </a></p>
+    <p><a type ="button" class="btn btn-outline-dark " href="/subjectadd/">Ajouter une matière </a></p>
 </div>
 </body>
 </html>
