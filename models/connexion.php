@@ -4,7 +4,6 @@ $username = 'student';
 $password = 'student';
 $bddname = 'student';
 
-
 try {
     $dbc = new PDO("mysql:host=$servername;dbname=$bddname", $username,
         $password);
