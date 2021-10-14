@@ -11,10 +11,7 @@
 </head>
 <header class="text-center bg-black fs-1 text-white"><h1>TD 7</h1></header>
 <body class="container">
-<h1 class="text-center mx-auto my-3">Test Bases de données PDO</h1>
-<?php //include('connexion.php') ?>
-<div class="container d-flex justify-content-end">
-    <p><a type ="button" class="btn btn-outline-dark " href="/subjectadd/">Ajouter une matière </a></p>
-</div>
+<h2 class="text-center mx-auto my-3">Test Bases de données PDO</h2>
+
 </body>
 </html>

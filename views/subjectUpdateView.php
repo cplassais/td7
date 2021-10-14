@@ -29,7 +29,8 @@
                 <?php
                 endif;
                 ?>
-                <input type="submit" value="valider" id="valider" name="valider"/>
+                <input type="submit" class="btn btn-secondary" value="valider" id="valider" name="valider"/>
+                <a type ="button" class="btn btn-secondary " href="/subjectlist/">Annuler </a>
             </p>
         </form>
     </div>

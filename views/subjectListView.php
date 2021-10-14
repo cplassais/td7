@@ -1,9 +1,11 @@
-<table class="table table-striped">
+
+<table class="table table-striped text-center">
     <thead>
     <tr>
         <th scope="col">INDEX</th>
         <th scope="col">NOM</th>
         <th scope="col">ACTIONS</th>
+        <th scope="col"><a type ="button" class="btn btn-dark " href="/subjectadd/">Ajouter une matière </a></th
     </tr>
     </thead>
     <tbody>
@@ -20,6 +22,7 @@
                 <a type="button" class="btn btn-outline-danger" href="/subjectdelete/<?php echo $value['id']; ?>"
                 title="supprimer">Supprimer</a>
             </td>
+            <td></td>
         </tr>
     <?php } ?>
     </tbody>
