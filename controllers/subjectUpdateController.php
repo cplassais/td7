@@ -12,5 +12,6 @@ endif;
 if (!empty($aParamsURL[2])):
     $oSubjects->getSubject($dbc, $aParamsURL[2]);
 endif;
-
-include('views/subjectUpdateView.php');
+$actionForm = '/subjectupdate/';
+include('views/subjectFormView.php');
+//include('views/subjectUpdateView.php');

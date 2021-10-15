@@ -12,5 +12,6 @@ endif;
 if (!empty($aParamsURL[2])):
     $aListSubjects = $oSubjects->getSubject($dbc, $aParamsURL[2]);
 endif;
-
-include('views/subjectDuplicateView.php');
+$actionForm = '/subjectduplicate/';
+include('views/subjectFormView.php');
+//include('views/subjectDuplicateView.php');

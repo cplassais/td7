@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row text-center">
-        <form class="form row" action="/subjectupdate/" method="post">
+        <form class="form row" action="<?php echo ($actionForm) ?>" method="post">
             <p>
                 <label for="name">Nom</label>
                 <input type="text" id="name" name="name"
@@ -14,7 +14,7 @@
             <p>
                 <label for="description">Description</label>
                 <textarea type="text" id="description"
-                          name="description"><?php if (!empty($oSubjects) and !empty($oSubjects->getDescription())): echo $oSubjects->getDescription(); endif; ?></textarea>
+                          name="description"><?php if (!empty($oSubjects) and !empty($oSubjects->getDescription())): echo ($oSubjects->getDescription()); endif; ?></textarea>
             </p>
             <p>
                 <label for="coefficient">Coefficient</label>
@@ -29,7 +29,11 @@
                 <?php
                 endif;
                 ?>
-                <input type="submit" class="btn btn-secondary" value="valider" id="valider" name="valider"/>
+                <input type="submit"
+                       class="btn btn-secondary"
+                       value="valider"
+                       id="valider"
+                       name="valider"/>
                 <a type ="button" class="btn btn-secondary " href="/subjectlist/">Annuler </a>
             </p>
         </form>
