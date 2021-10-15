@@ -9,8 +9,9 @@
     <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
+
+<body class="container" style=" width: 85%;">
 <header class="text-center bg-black fs-1 text-white"><h1>TD 7</h1></header>
-<body class="container">
 <h2 class="text-center mx-auto my-3">Test Bases de données PDO</h2>
 
 </body>
