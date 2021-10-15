@@ -11,11 +11,11 @@ class Subject
 
     public function __construct($id = '', $name = '', $description = '', $duration = 0, $coefficient = 0)
     {
+        $this->id = $id;
         $this->name = $name;
         $this->description = $description;
         $this->duration = $duration;
         $this->coefficient = $coefficient;
-
     }
 
     /**
@@ -53,7 +53,7 @@ class Subject
     /**
      * @return mixed|string
      */
-    public function getDescription(): mixed
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -67,17 +67,17 @@ class Subject
     }
 
     /**
-     * @return mixed|string
+     * @return int|mixed
      */
-    public function getDuration(): mixed
+    public function getDuration(): int
     {
         return $this->duration;
     }
 
     /**
-     * @param mixed|string $duration
+     * @param int|mixed $duration
      */
-    public function setDuration(mixed $duration): void
+    public function setDuration($duration): int
     {
         $this->duration = $duration;
     }
@@ -85,7 +85,7 @@ class Subject
     /**
      * @return int|mixed
      */
-    public function getCoefficient(): mixed
+    public function getCoefficient(): int
     {
         return $this->coefficient;
     }
@@ -93,25 +93,74 @@ class Subject
     /**
      * @param int|mixed $coefficient
      */
-    public function setCoefficient(mixed $coefficient): void
+    public function setCoefficient(int $coefficient): int
     {
         $this->coefficient = $coefficient;
+    }
+
+    /**
+     * @param $dbc
+     * @return array
+     */
+    public function getDurationByDay()
+    {
+        $days = floor($this->duration / 7);
+        $msg = $days . ' jour';
+        if ($days > 1):
+            $msg .= 's';
+        endif;
+        return $msg;
+    }
+
+    public function coefMessage()
+    {
+        if ($this->coefficient <= 1):
+            $msg = 'Compétence transverse';
+        elseif ($this->coefficient > 1 and $this->coefficient <=2):
+            $msg = 'Compétence initiale';
+        else:
+            $msg = 'Competence indispensable';
+        endif;
+        return $msg;
     }
 
     public function getListSubjects($dbc)
     {
         $query = ("SELECT * FROM `subject` ORDER BY name");
         $response = $dbc->query($query);
-        $subjects = $response->fetchAll();
-        return $subjects;
+        $subjects = $response->fetchAll(PDO::FETCH_ASSOC);
+
+        $aSubjects = array();
+
+        foreach ($subjects as $subject):
+            $oSubject = new Subject($subject['id'], $subject['name'], $subject['description'], $subject['duration'], $subject['coefficient']);
+            array_push($aSubjects, $oSubject);
+        endforeach;
+        return $aSubjects;
     }
 
-    public function getSingleSubjects($dbc, $index)
+//    public function getSubject($dbc, $index)
+//    {
+//        $query = "SELECT * FROM `subject` WHERE id LIKE $index";
+//        $response = $dbc->query($query);
+//        $subject = $response->fetch(PDO::FETCH_ASSOC);
+//        return $subject;
+//    }
+    public function getSubject($dbc, $index)
     {
-        $query = "SELECT * FROM `subject` WHERE id LIKE $index";
-        $response = $dbc->query($query);
-        $subject = $response->fetch(PDO::FETCH_ASSOC);
-        return $subject;
+        $query = 'SELECT * FROM subject WHERE id = :id';
+        $sth = $dbc->prepare($query);
+        $sth->bindParam(':id', $index);
+        $sth->execute();
+        $subject = $sth->fetch(PDO::FETCH_ASSOC);
+
+        $this->id = $subject['id'];
+        $this->name = $subject['name'];
+        $this->description = $subject['description'];
+        $this->duration = $subject['duration'];
+        $this->coefficient = $subject['coefficient'];
+
+        //return $subject;
     }
 
     public function updateSubject($dbc, $id, $name, $description, $duration, $coefficient)

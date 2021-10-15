@@ -4,22 +4,22 @@
             <p>
                 <label for="name">Nom</label>
                 <input type="text" id="name" name="name"
-                       value="<?php if (!empty($aListSubjects) and !empty($aListSubjects['name'])): echo $aListSubjects['name']; endif; ?>"/>
+                       value="<?php if (!empty($oSubjects) and !empty($oSubjects->getName())): echo $oSubjects->getName(); endif; ?>"/>
             </p>
             <p>
                 <label for="duree">Durée</label>
                 <input type="text" id="duration" name="duration"
-                       value="<?php if (!empty($aListSubjects) and !empty($aListSubjects['duration'])): echo $aListSubjects['duration']; endif; ?>"/>
+                       value="<?php if (!empty($oSubjects) and !empty($oSubjects->getDuration())): echo $oSubjects->getDuration(); endif; ?>"/>
             </p>
             <p>
                 <label for="description">Description</label>
                 <textarea type="text" id="description"
-                          name="description"><?php if (!empty($aListSubjects) and !empty($aListSubjects['description'])): echo $aListSubjects['description']; endif; ?></textarea>
+                          name="description"><?php if (!empty($oSubjects) and !empty($oSubjects->getDescription())): echo $oSubjects->getDescription(); endif; ?></textarea>
             </p>
             <p>
                 <label for="coefficient">Coefficient</label>
                 <input type="text" id="coefficient" name="coefficient"
-                       value="<?php if (!empty($aListSubjects) and !empty($aListSubjects['coefficient'])): echo $aListSubjects['coefficient']; endif; ?>"/>
+                       value="<?php if (!empty($oSubjects) and !empty($oSubjects->getCoefficient())): echo $oSubjects->getCoefficient(); endif; ?>"/>
             </p>
             <p>
                 <?php

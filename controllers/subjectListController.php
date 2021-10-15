@@ -2,7 +2,7 @@
 require_once 'models/connexion.php';
 require_once 'models/Subject.php';
 
-$oSubjects = new Subject();
-$aListSubjects = $oSubjects->getListSubjects($dbc);
+$oSubject = new Subject();
+$aResponses = $oSubject->getListSubjects($dbc);
 
-include ('views/subjectListView.php');
+include('views/subjectListView.php');
