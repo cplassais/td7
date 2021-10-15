@@ -10,7 +10,7 @@ if(!empty($_POST)):
 endif;
 
 if (!empty($aParamsURL[2])):
-    $aListSubjects = $oSubjects->getSubject($dbc, $aParamsURL[2]);
+    $oSubjects->getSubject($dbc, $aParamsURL[2]);
 endif;
 $actionForm = '/subjectduplicate/';
 include('views/subjectFormView.php');
