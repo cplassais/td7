@@ -3,31 +3,28 @@ include 'index.php';
 $aParamsURL = explode('/',$_SERVER['REQUEST_URI']);
 switch ($aParamsURL[1]) {
     case 'subjectlist':
-        include 'controllers/subjectListController.php';
+        include 'controllers/subject/subjectListController.php';
         break;
     case 'subjectsingle':
-        include 'controllers/subjectSingleController.php';
+        include 'controllers/subject/subjectSingleController.php';
         break;
     case 'subjectupdate':
-        include 'controllers/subjectUpdateController.php';
+        include 'controllers/subject/subjectUpdateController.php';
         break;
     case 'subjectdelete':
-        include 'controllers/subjectDeleteController.php';
+        include 'controllers/subject/subjectDeleteController.php';
         break;
     case 'subjectadd':
-        include 'controllers/subjectAddController.php';
+        include 'controllers/subject/subjectAddController.php';
         break;
     case 'subjectduplicate':
-        include 'controllers/subjectDuplicateController.php';
+        include 'controllers/subject/subjectDuplicateController.php';
         break;
-    case 'student':
-        include 'controllers/studentController.php';
+    case 'studentsingle':
+        include 'controllers/student/studentSingleController.php';
         break;
-    case 'addstudent':
-        include 'controllers/addStudentController.php';
-        break;
-    case 'addform':
-        include 'controllers/formStudentController.php';
+    case 'studentlist':
+        include 'controllers/student/studentListController.php';
         break;
     default:
         include 'controllers/errorPageController.php';
