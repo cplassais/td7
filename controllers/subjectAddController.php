@@ -11,3 +11,4 @@ if(!empty($_POST)):
 endif;
 $actionForm = '/subjectadd/';
 include('views/subjectFormView.php');
+//include('views/subjectAddView.php');

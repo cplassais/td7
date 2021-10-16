@@ -79,7 +79,7 @@ class Subject
      */
     public function setDuration($duration): int
     {
-        $this->duration = $duration;
+        return $this->duration = $duration;
     }
 
     /**
@@ -95,7 +95,7 @@ class Subject
      */
     public function setCoefficient(int $coefficient): int
     {
-        $this->coefficient = $coefficient;
+        return $this->coefficient = $coefficient;
     }
 
     /**

@@ -7,7 +7,7 @@
                        value="<?php if (!empty($oSubjects) and !empty($oSubjects->getName())): echo $oSubjects->getName(); endif; ?>"/>
             </p>
             <p>
-                <label for="duree">Durée</label>
+                <label for="duration">Durée</label>
                 <input type="text" id="duration" name="duration"
                        value="<?php if (!empty($oSubjects) and !empty($oSubjects->getDuration())): echo $oSubjects->getDuration(); endif; ?>"/>
             </p>
@@ -29,11 +29,7 @@
                 <?php
                 endif;
                 ?>
-                <input type="submit"
-                       class="btn btn-secondary"
-                       value="valider"
-                       id="valider"
-                       name="valider"/>
+                <input type="submit" class="btn btn-secondary" value="valider" id="valider" name="valider"/>
                 <a type ="button" class="btn btn-secondary " href="/subjectlist/">Annuler </a>
             </p>
         </form>
