@@ -1,6 +1,5 @@
 <?php
-require_once 'models/connexion.php';
-//require_once 'models/Subject.php';
+//require_once 'models/connexion.php';
 
 $oSubjects = new Subject();
 if(!empty($_POST)):

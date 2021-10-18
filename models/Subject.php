@@ -1,8 +1,6 @@
 <?php
-
 class Subject
 {
-// déclaration d'une propriété
     private $id = 'id';
     private $name = '';
     private $description = '';
@@ -119,7 +117,7 @@ class Subject
         return $msg;
     }
 
-    public function getListSubjects($dbc)
+    static function getListSubjects($dbc)
     {
         $query = ("SELECT * FROM `subject` ORDER BY name");
         $sth = $dbc->query($query);
@@ -128,7 +126,7 @@ class Subject
         return $subjects;
     }
 
-    public function getSubject($dbc, $index)
+    public static function getSubject($dbc, $index)
     {
         $query = 'SELECT * FROM subject WHERE id = :id';
         $sth = $dbc->prepare($query);
@@ -153,7 +151,7 @@ class Subject
         $sth->execute();
     }
 
-    public function deleteSubject($dbc, $id)
+    public static function deleteSubject($dbc, $id)
     {
         $query = "DELETE FROM `subject` WHERE `subject`.`id` = $id";
         $dbc->query($query);
@@ -177,8 +175,5 @@ class Subject
 
         $sth->execute();
     }
-    //$query = "INSERT INTO student (id, name, firstname, birthdate) VALUES (NULL, 'AMPOULE', 'Machine', '2021-10-12')";
-    //$student= $dbc->prepare($query);
-    //$student->execute(['name','firstname','birthdate']);
 
 }

@@ -1,8 +1,9 @@
 <?php
-require_once 'models/connexion.php';
-//require_once 'models/Subject.php';
+//require_once 'models/connexion.php';
 
 $oSubject = new Subject();
-$aResponses = $oSubject->getListSubjects($dbc);
+$tmp = new Connexion();
+$dbc= $tmp->Connexion();
+$aResponses = $oSubject::getListSubjects($dbc);
 
 include('views/subjectListView.php');

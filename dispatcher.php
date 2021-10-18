@@ -1,6 +1,6 @@
 <?php
 spl_autoload_register(function ($Class) {
-    include 'models/'.$Class.'.php';
+    require_once 'models/'.$Class.'.php';
 });
 
     include 'index.php';

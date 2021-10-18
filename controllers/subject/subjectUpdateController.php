@@ -1,6 +1,5 @@
 <?php
-require_once 'models/connexion.php';
-//require_once 'models/Subject.php';
+//require_once 'models/connexion.php';
 
 $oSubjects = new Subject();
 if(!empty($_POST)):
@@ -10,7 +9,7 @@ if(!empty($_POST)):
 endif;
 
 if (!empty($aParamsURL[2])):
-    $oSubjects = $oSubjects->getSubject($dbc, $aParamsURL[2]);
+    $oSubjects = Subject::getSubject($dbc, $aParamsURL[2]);
 endif;
 $actionForm = '/subjectupdate/';
 include('views/subjectFormView.php');
