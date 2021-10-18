@@ -9,13 +9,8 @@ class Subject
     private $duration = 0;
     private $coefficient = 0;
 
-    public function __construct($id = '', $name = '', $description = '', $duration = 0, $coefficient = 0)
+    public function __construct()
     {
-        $this->id = $id;
-        $this->name = $name;
-        $this->description = $description;
-        $this->duration = $duration;
-        $this->coefficient = $coefficient;
     }
 
     /**
@@ -127,40 +122,22 @@ class Subject
     public function getListSubjects($dbc)
     {
         $query = ("SELECT * FROM `subject` ORDER BY name");
-        $response = $dbc->query($query);
-        $subjects = $response->fetchAll(PDO::FETCH_ASSOC);
-
-        $aSubjects = array();
-
-        foreach ($subjects as $subject):
-            $oSubject = new Subject($subject['id'], $subject['name'], $subject['description'], $subject['duration'], $subject['coefficient']);
-            array_push($aSubjects, $oSubject);
-        endforeach;
-        return $aSubjects;
+        $sth = $dbc->query($query);
+        $subjects = $sth->fetchAll(PDO::FETCH_CLASS, __CLASS__); //ou
+        //$subjects = $sth->fetchAll(PDO::FETCH_CLASS, 'Subject');
+        return $subjects;
     }
 
-//    public function getSubject($dbc, $index)
-//    {
-//        $query = "SELECT * FROM `subject` WHERE id LIKE $index";
-//        $response = $dbc->query($query);
-//        $subject = $response->fetch(PDO::FETCH_ASSOC);
-//        return $subject;
-//    }
     public function getSubject($dbc, $index)
     {
         $query = 'SELECT * FROM subject WHERE id = :id';
         $sth = $dbc->prepare($query);
         $sth->bindParam(':id', $index);
         $sth->execute();
-        $subject = $sth->fetch(PDO::FETCH_ASSOC);
+        $sth->setFetchMode(PDO::FETCH_OBJ);
+        $subject = $sth->fetchObject(__CLASS__);
 
-        $this->id = $subject['id'];
-        $this->name = $subject['name'];
-        $this->description = $subject['description'];
-        $this->duration = $subject['duration'];
-        $this->coefficient = $subject['coefficient'];
-
-        //return $subject;
+        return $subject;
     }
 
     public function updateSubject($dbc, $id, $name, $description, $duration, $coefficient)
