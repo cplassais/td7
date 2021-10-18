@@ -5,7 +5,7 @@
         <th scope="col">INDEX</th>
         <th scope="col">NOM</th>
         <th scope="col">PRENOM</th>
-        <th scope="col">DATE NAISSANCE</th>>
+        <th scope="col">DATE NAISSANCE</th>
         <th scope="col"><a type ="button" class="btn btn-dark " href="/studentadd/">Ajouter un apprenant </a></th
     </tr>
     </thead>

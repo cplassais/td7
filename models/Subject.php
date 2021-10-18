@@ -165,16 +165,8 @@ class Subject
 
     public function updateSubject($dbc, $id, $name, $description, $duration, $coefficient)
     {
-        $query = 'UPDATE subject 
-                    SET 
-                    name = :name,
-                    description = :description,
-                    duration = :duration,
-                    coefficient = :coefficient
-                    WHERE id = :id';
-
+        $query = 'UPDATE subject SET name = :name, description = :description, duration = :duration, coefficient = :coefficient WHERE id = :id';
         $sth = $dbc->prepare($query);
-
         $sth->bindParam(':id', $id);
         $sth->bindParam(':name', $name);
         $sth->bindParam(':description', $description);
