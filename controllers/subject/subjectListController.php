@@ -1,6 +1,6 @@
 <?php
 require_once 'models/connexion.php';
-require_once 'models/Subject.php';
+//require_once 'models/Subject.php';
 
 $oSubject = new Subject();
 $aResponses = $oSubject->getListSubjects($dbc);

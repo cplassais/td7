@@ -4,8 +4,8 @@ class Subject
 {
 // déclaration d'une propriété
     private $id = 'id';
-    private $name = 'name';
-    private $description = 'description';
+    private $name = '';
+    private $description = '';
     private $duration = 0;
     private $coefficient = 0;
 

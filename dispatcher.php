@@ -1,5 +1,9 @@
 <?php
-include 'index.php';
+spl_autoload_register(function ($Class) {
+    include 'models/'.$Class.'.php';
+});
+
+    include 'index.php';
 $aParamsURL = explode('/',$_SERVER['REQUEST_URI']);
 switch ($aParamsURL[1]) {
     case 'subjectlist':
