@@ -2,7 +2,6 @@
 
 class Subject extends Db
 {
-
     private $id;
     private $name;
     private $description;
@@ -93,7 +92,7 @@ class Subject extends Db
 
     /**
      * @param $dbc
-     * @return array
+     * @return string
      */
     public function getDurationByDay()
     {

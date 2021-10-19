@@ -31,6 +31,9 @@ switch ($aParamsURL[1]) {
     case 'subjectduplicate':
         include 'controllers/subject/subjectDuplicateController.php';
         break;
+    case 'importcsv':
+        include 'controllers/importCsvController.php';
+        break;
     case 'studentsingle':
         include 'controllers/student/studentSingleController.php';
         break;
