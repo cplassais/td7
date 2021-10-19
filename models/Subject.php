@@ -9,10 +9,7 @@ class Subject extends Db
     private $duration;
     private $coefficient;
 
-    public function __construct()
-    {
-
-    }
+    public function __construct(){}
 
     /**
      * @return string
@@ -107,7 +104,9 @@ class Subject extends Db
         endif;
         return $msg;
     }
-
+    /**
+     * @return string
+     */
     public function coefMessage()
     {
         if ($this->coefficient <= 1):
@@ -120,6 +119,10 @@ class Subject extends Db
         return $msg;
     }
 
+    /**
+     * @param $dbc
+     * @return mixed
+     */
     static function getListSubjects($dbc)
     {
         $query = ("SELECT * FROM `subject` ORDER BY name");
@@ -129,6 +132,11 @@ class Subject extends Db
         return $subjects;
     }
 
+    /**
+     * @param $dbc
+     * @param $id
+     * @return mixed
+     */
     public static function getSubject($dbc, $id)
     {
 
@@ -139,6 +147,15 @@ class Subject extends Db
         return $oSubject;
     }
 
+    /**
+     * @param $dbc
+     * @param $id
+     * @param $name
+     * @param $description
+     * @param $duration
+     * @param $coefficient
+     * @return mixed
+     */
     public function updateSubject($dbc, $id, $name, $description, $duration, $coefficient)
     {
         $query = 'UPDATE subject SET name = :name, description = :description, duration = :duration, coefficient = :coefficient WHERE id = :id';
@@ -148,6 +165,10 @@ class Subject extends Db
         return $oSubject;
     }
 
+    /**
+     * @param $dbc
+     * @param $id
+     */
     public static function deleteSubject($dbc, $id)
     {
         $query = "DELETE FROM `subject` WHERE `subject`.`id` = $id";
@@ -156,6 +177,14 @@ class Subject extends Db
 
     }
 
+    /**
+     * @param $dbc
+     * @param $name
+     * @param $description
+     * @param $duration
+     * @param $coefficient
+     * @return mixed
+     */
     public static function addSubject($dbc, $name, $description, $duration, $coefficient)
     {
         $query = 'INSERT INTO `subject` 
@@ -168,5 +197,4 @@ class Subject extends Db
         $oSubject = $dbc->select($query, $aBindParam);
         return $oSubject;
     }
-
 }
