@@ -3,6 +3,13 @@ spl_autoload_register(function ($Class) {
     require_once 'models/'.$Class.'.php';
 });
 
+define('SERVER_NAME', 'localhost'); //en local : mettre localhost
+define('DB_NAME', 'student');
+define('DB_USER', 'student');
+define('DB_PASS', 'student');
+
+$dbc = new Db(SERVER_NAME, DB_NAME, DB_USER, DB_PASS);
+
     include 'index.php';
 $aParamsURL = explode('/',$_SERVER['REQUEST_URI']);
 switch ($aParamsURL[1]) {

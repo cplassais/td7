@@ -4,7 +4,7 @@
             <h2 class="text-center">Détails matière</h2>
             <p>Id : <?php echo $oSubject->getId(); ?></p>
             <p>Nom : <?php echo $oSubject->getName(); ?></p>
-            <p>Durée : <?php echo $oSubject->getDuration(); ?></p>
+            <p>Durée : <?php echo $oSubject->getDuration(); ?> heures</p>
             <p>Description : <?php echo $oSubject->getDescription(); ?></p>
             <p>Coefficient : <?php echo $oSubject->getCoefficient(); ?></p>
 

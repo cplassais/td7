@@ -1,14 +1,17 @@
 <?php
-class Subject
+
+class Subject extends Db
 {
-    private $id = 'id';
-    private $name = '';
-    private $description = '';
-    private $duration = 0;
-    private $coefficient = 0;
+
+    private $id;
+    private $name;
+    private $description;
+    private $duration;
+    private $coefficient;
 
     public function __construct()
     {
+
     }
 
     /**
@@ -109,7 +112,7 @@ class Subject
     {
         if ($this->coefficient <= 1):
             $msg = 'Compétence transverse';
-        elseif ($this->coefficient > 1 and $this->coefficient <=2):
+        elseif ($this->coefficient > 1 and $this->coefficient <= 2):
             $msg = 'Compétence initiale';
         else:
             $msg = 'Competence indispensable';
@@ -126,54 +129,45 @@ class Subject
         return $subjects;
     }
 
-    public static function getSubject($dbc, $index)
+    public static function getSubject($dbc, $id)
     {
-        $query = 'SELECT * FROM subject WHERE id = :id';
-        $sth = $dbc->prepare($query);
-        $sth->bindParam(':id', $index);
-        $sth->execute();
-        $sth->setFetchMode(PDO::FETCH_OBJ);
-        $subject = $sth->fetchObject(__CLASS__);
 
-        return $subject;
+        $query = 'SELECT * FROM subject WHERE id = :id';
+        $aBindParam = array('id' => $id);
+        $oSubject = $dbc->select($query, $aBindParam);
+
+        return $oSubject;
     }
 
     public function updateSubject($dbc, $id, $name, $description, $duration, $coefficient)
     {
         $query = 'UPDATE subject SET name = :name, description = :description, duration = :duration, coefficient = :coefficient WHERE id = :id';
-        $sth = $dbc->prepare($query);
-        $sth->bindParam(':id', $id);
-        $sth->bindParam(':name', $name);
-        $sth->bindParam(':description', $description);
-        $sth->bindParam(':duration', $duration);
-        $sth->bindParam(':coefficient', $coefficient);
+        $aBindParam = array('id' => $id, 'name' => $name, 'description' => $description, 'duration' => $duration, 'coefficient' => $coefficient);
+        $oSubject = $dbc->update($query, $aBindParam);
 
-        $sth->execute();
+        return $oSubject;
     }
 
     public static function deleteSubject($dbc, $id)
     {
         $query = "DELETE FROM `subject` WHERE `subject`.`id` = $id";
-        $dbc->query($query);
+        $aBindParam = array('id' => $id);
+        $oSubject = $dbc->delete($query, $aBindParam);
+
     }
 
-    public function addSubject($dbc, $name, $description, $duration, $coefficient)
+    public static function addSubject($dbc, $name, $description, $duration, $coefficient)
     {
+
         $query = 'INSERT INTO `subject` 
                     SET 
                     name = :name,
                     description = :description,
                     duration = :duration,
                     coefficient = :coefficient';
-
-        $sth = $dbc->prepare($query);
-
-        $sth->bindParam(':name', $name);
-        $sth->bindParam(':description', $description);
-        $sth->bindParam(':duration', $duration);
-        $sth->bindParam(':coefficient', $coefficient);
-
-        $sth->execute();
+        $aBindParam = array('name' => $name, 'description' => $description, 'duration' => $duration, 'coefficient' => $coefficient);
+        $oSubject = $dbc->select($query, $aBindParam);
+        return $oSubject;
     }
 
 }
