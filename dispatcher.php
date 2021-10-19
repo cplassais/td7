@@ -3,10 +3,10 @@ spl_autoload_register(function ($Class) {
     require_once 'models/'.$Class.'.php';
 });
 
-define('SERVER_NAME', 'localhost'); //en local : mettre localhost
-define('DB_NAME', 'student');
-define('DB_USER', 'student');
-define('DB_PASS', 'student');
+const SERVER_NAME = 'localhost';
+const DB_NAME = 'student';
+const DB_USER = 'student';
+const DB_PASS = 'student';
 
 $dbc = new Db(SERVER_NAME, DB_NAME, DB_USER, DB_PASS);
 

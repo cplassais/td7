@@ -158,7 +158,6 @@ class Subject extends Db
 
     public static function addSubject($dbc, $name, $description, $duration, $coefficient)
     {
-
         $query = 'INSERT INTO `subject` 
                     SET 
                     name = :name,
