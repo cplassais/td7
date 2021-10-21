@@ -6,7 +6,6 @@ class Db extends PDO
     {
         parent::__construct('mysql:host=' . $DB_HOST . ';dbname=' . $DB_NAME, $DB_USER, $DB_PASS);
     }
-
     /**
      * @param $squery
      * @param array $array

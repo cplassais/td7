@@ -124,7 +124,7 @@ class Subject extends Db
      */
     static function getListSubjects($dbc)
     {
-        $query = ("SELECT * FROM `subject` ORDER BY name");
+        $query = ("SELECT * FROM subject ORDER BY name");
         $sth = $dbc->query($query);
         $subjects = $sth->fetchAll(PDO::FETCH_CLASS, __CLASS__); //ou
         //$subjects = $sth->fetchAll(PDO::FETCH_CLASS, 'Subject');
